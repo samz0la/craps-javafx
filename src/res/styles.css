@@ -1,12 +1,12 @@
 #content {
   -fx-padding: 10px;
-  -fx-pref-width: 260px;
+  -fx-pref-width: 300px;
   -fx-alignment: bottom-center;
   -fx-spacing: 10px;
 }
 
 .menu-bar {
-  -fx-use-system-menu-bar: false;
+  -fx-use-system-menu-bar: true;
   -fx-padding: 0 5px 1px 5px;
 }
 
@@ -28,10 +28,11 @@
 .roll {
   -fx-spacing: 10px;
   -fx-padding: 5px 0 5px 50px;
+  -fx-max-width: 200px;
 }
 
 .roll Text {
-  -fx-font-size: 20px;
+  -fx-font-size: 14px;
   -fx-font-weight: bold;
 }
 
