@@ -1,22 +1,33 @@
 package edu.cnm.deepdive.craps.model;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
+import edu.cnm.deepdive.craps.model.Game.State;
+import org.junit.jupiter.api.Test;
 
-@RunWith(Arquillian.class)
-public class GameTest {
+class GameTest {
+    @Test
+    void testComeoutLoss() {
+      for (int roll : new int[]{2, 3, 12}) {
+        assertSame(State.LOSS, State.COME_OUT.roll(roll, 0));
+      }
+    }
 
-  @Deployment
-  public static JavaArchive createDeployment() {
-    return ShrinkWrap.create(JavaArchive.class)
-        .addClass(Game.class)
-        .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-  }
+    @Test
+    void testComeoutWin() {
+      for (int roll : new int[]{7, 11}) {
+        assertSame(State.WIN, State.COME_OUT.roll(roll, 0));
+      }
+    }
 
+    @Test
+    void testPointPoint() {
+      for (int point : new int[]{4,5, 6, 8, 9, 10}) {
+        for (int roll = 2; roll <= 12; roll++) {
+          if (roll != 7 && roll != point) {
+            assertSame(State.POINT, State.POINT.roll(roll, point));
+          }
+        }
+      }
+    }
 }
