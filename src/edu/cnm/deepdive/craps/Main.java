@@ -10,6 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+
+/**
+ * Initiates Main class of craps simulator
+ */
 public class Main extends Application {
 
     private static final String RESOURCE_PATH = "res/";

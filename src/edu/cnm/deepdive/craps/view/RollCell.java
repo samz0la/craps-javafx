@@ -18,10 +18,20 @@ public class RollCell extends ListCell<Roll> {
 
   private ResourceBundle bundle;
 
+  /**
+   * creates RollCell method
+   * @param bundle is an object of Bundle
+   */
   public RollCell(ResourceBundle bundle) {
     this.bundle = bundle;
   }
 
+  /**
+   *  updates internal for a given roll
+   * @param item is an object of type Roll
+   * @param empty is a boolean object
+   * try catches IO exceptions
+   */
   @Override
   protected void updateItem(Roll item, boolean empty) {
     super.updateItem(item, empty);

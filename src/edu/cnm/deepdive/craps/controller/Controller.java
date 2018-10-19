@@ -116,6 +116,10 @@ public class Controller {
     private static final int TALLY_UPDATE_INTERVAL = 2_000;
     private static final int ROLLS_UPDATE_INTERVAL = 10_000;
 
+    /**
+     * initiates run method
+     * updates tally interval and roll interval
+     */
     @Override
     public void run() {
 

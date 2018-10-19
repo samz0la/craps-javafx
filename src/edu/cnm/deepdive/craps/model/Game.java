@@ -15,6 +15,10 @@ public class Game {
   private int wins;
   private int losses;
 
+  /**
+   * Initiates the Random game class.
+   * @param rng creates random ints
+   */
   public Game(Random rng) {
     this.rng = rng;
     rolls = new LinkedList<>();
@@ -22,6 +26,9 @@ public class Game {
     losses = 0;
   }
 
+  /**
+   * Initiates the reset option.
+   */
   public void reset() {
     state = State.COME_OUT;
     point = 0;
@@ -30,6 +37,10 @@ public class Game {
     }
   }
 
+  /**
+   * Initiates a single roll
+   * @return returns the state of each die rolled
+   */
   private State roll() {
     int[] dice = {
         1 + rng.nextInt(6),
@@ -47,6 +58,10 @@ public class Game {
     return state;
   }
 
+  /**
+   * Initiates a constant run of play
+   * @return returns the state of each die rolled
+   */
   public State play() {
     reset();
     while (state != State.WIN && state != State.LOSS) {
@@ -64,20 +79,36 @@ public class Game {
     return state;
   }
 
+  /**
+   * Shows amount of rolls played
+   * @return shows the new total amount of rolls
+   */
   public List<Roll> getRolls() {
     synchronized (lock) {
       return new LinkedList<>(rolls);
     }
   }
 
+  /**
+   * Initiates amount of wins
+   * @return returns amount of wins
+   */
   public int getWins() {
     return wins;
   }
 
+  /**
+   * Initiates amount of losses
+   * @return returns amount of loses
+   */
   public int getLosses() {
     return losses;
   }
 
+  /**
+   * Initiates the Roll class
+   * shows amount of each die rolled
+   */
   public static class Roll {
 
     private final int[] dice;
@@ -103,6 +134,9 @@ public class Game {
     }
   }
 
+  /**
+   * Initiates the win, loss, and point parameters
+   */
   public enum State {
     COME_OUT{
       @Override
